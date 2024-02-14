@@ -2,9 +2,13 @@ package controller;
 
 import java.util.Scanner;
 
+import service.RBI;
+import service.SBI;
+
 public class Admin {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		RBI sbi = new SBI();
 		
 		do {
 			System.out.print("Welcome to Bank");
@@ -17,11 +21,19 @@ public class Admin {
 			int bankingOption = sc.nextInt();
 			
 			switch (bankingOption) {
-			case 1:
-				
+			case 1:sbi.createAccount();
 				break;
-
-			default:
+				
+			case 2:sbi.checkBalance();
+				break;
+				
+			case 3:sbi.withdrawMoney();
+				break;
+			
+			case 4:sbi.addMoney();
+				break;
+			
+			default:System.out.println("Choose valid option");
 				break;
 			}
 			
