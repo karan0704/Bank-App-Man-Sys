@@ -12,11 +12,11 @@ public class Admin {
 		
 		do {
 			System.out.print("Welcome to Bank");
-			System.out.print("Select option for Banking");
-			System.out.print("1. Create Account"
-					+ "2. Check Balance"
-					+ "3. Withdraw Money"
-					+ "4. Add Money");
+			System.out.print("\nSelect option for Banking");
+			System.out.print("\n1. Create Account"
+					+ "\n2. Check Balance"
+					+ "\n3. Withdraw Money"
+					+ "\n4. Add Money");
 			
 			int bankingOption = sc.nextInt();
 			
@@ -37,12 +37,13 @@ public class Admin {
 				break;
 			}
 			
-			sc.close();
+			
 			
 			
 			
 			
 		} while (true);
+		
 		
 	}
 
