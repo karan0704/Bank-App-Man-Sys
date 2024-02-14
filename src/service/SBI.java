@@ -36,7 +36,15 @@ public class SBI implements RBI{
 
 	@Override
 	public void checkBalance() {
-		// TODO Auto-generated method stub
+		System.out.println("\nWhat is your ID No");
+		int idNo = sc.nextInt();
+		if (account.getId()==idNo && idNo!=0) {
+			System.out.println(account.getName());
+			System.out.println(account.getBalance());
+		}
+		else {
+			System.out.println("ID not exist");
+		}
 		
 	}
 
