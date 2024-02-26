@@ -5,59 +5,76 @@ import java.util.Scanner;
 
 import model.Account;
 
-public class SBI implements RBI{
-	
+public class SBI implements RBI {
+
 	Scanner sc = new Scanner(System.in);
 	Account account = new Account();
+	CreateAccount createAccount = new CreateAccount();
+
 	@Override
 	public void createAccount() {
-		System.out.println("Write your name below");
-		String name = sc.next();
-		account.setName(name);
 		
-		System.out.println("Write your ID below");
-		int id = sc.nextInt();
-		account.setId(id);
-		
-		System.out.println("Write your Addres below");
+		createAccount.enteredName();
+
+		createAccount.settingID();
+
+		System.out.println("\nWrite your Addres below\t");
 		String add = sc.next();
 		account.setAdd(add);
-		
-		System.out.println("Write your Contact Number below");
+
+		System.out.println("\nWrite your Contact Number below\t");
 		BigInteger contactNumber01 = sc.nextBigInteger();
 		account.setContactNumber(contactNumber01);
-		
-		System.out.println("Write your starting balance below");
+
+		System.out.println("\nWrite your starting balance below\t");
 		double startingBalance = sc.nextDouble();
 		account.setBalance(startingBalance);
-		
-		System.out.println("Account is created");
-	}
+
+		System.out.println("\nAccount is created");
+		System.out.println("---------------------------");
+	}	
+
+//	@Override
+//	public void checkBalance() {
+//		System.out.println("\nWhat is your ID No\t");
+//		int idNo = sc.nextInt();
+//		if (account.getId()==idNo && idNo!=0) {
+//			System.out.println(account.getName());
+//			System.out.println(account.getBalance());
+//		}
+//		else {
+//			System.out.println("ID not exist");
+//			checkBalance();
+//			
+//		}
+//		
+//	}
 
 	@Override
 	public void checkBalance() {
-		System.out.println("\nWhat is your ID No");
-		int idNo = sc.nextInt();
-		if (account.getId()==idNo && idNo!=0) {
-			System.out.println(account.getName());
-			System.out.println(account.getBalance());
+		while (true) {
+	            System.out.println("\nWhat is your ID No\t");
+	            int idNo = sc.nextInt();
+	            if (idNo != 0 && idNo == account.getId()) {
+	                System.out.println(account.getName());
+	                System.out.println(account.getBalance());
+	                break; 
+	            } else {
+	                System.out.println("Invalid ID. Please try again.");
+	            }
 		}
-		else {
-			System.out.println("ID not exist");
-		}
-		
 	}
 
 	@Override
 	public void withdrawMoney() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void addMoney() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
