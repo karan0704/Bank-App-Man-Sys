@@ -51,7 +51,7 @@ public class SBI implements RBI {
 //	}
 
 	@Override
-	public void checkBalance() {
+	public void checkBalance()x {
 		while (true) {
 	            System.out.println("\nWhat is your ID No\t");
 	            int idNo = sc.nextInt();
@@ -60,7 +60,7 @@ public class SBI implements RBI {
 	                System.out.println(account.getBalance());
 	                break; 
 	            } else {
-	                System.out.println("Invalid ID. Please try again.");
+	                System.out.println("Invalid ID.");
 	            }
 		}
 	}
@@ -76,5 +76,17 @@ public class SBI implements RBI {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public int tryAgainExit() {
+		System.out.println("1. Please try again"
+				+ "2. Exit");
+		
+		int tryAgainOrExit = sc.nextInt();
+		return tryAgainOrExit;
+		
+	}
+	
+	
 
 }
