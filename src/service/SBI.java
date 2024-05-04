@@ -1,6 +1,5 @@
 package service;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 import model.Account;
@@ -14,23 +13,12 @@ public class SBI implements RBI {
 	@Override
 	public void createAccount() {
 		
-		createAccount.enteredName();
-
+		createAccount.enterName();
 		createAccount.settingID();
-
-		System.out.println("\nWrite your Addres below\t");
-		String add = sc.next();
-		account.setAdd(add);
-
-		System.out.println("\nWrite your Contact Number below\t");
-		BigInteger contactNumber01 = sc.nextBigInteger();
-		account.setContactNumber(contactNumber01);
-
-		System.out.println("\nWrite your starting balance below\t");
-		double startingBalance = sc.nextDouble();
-		account.setBalance(startingBalance);
-
-		System.out.println("\nAccount is created");
+		createAccount.enterAddress();
+		createAccount.enterStartingBalance();
+		
+		System.out.println("\nAccount is created\n");
 		System.out.println("---------------------------");
 	}	
 
@@ -51,19 +39,22 @@ public class SBI implements RBI {
 //	}
 
 	@Override
-	public void checkBalance()x {
-		while (true) {
-	            System.out.println("\nWhat is your ID No\t");
-	            int idNo = sc.nextInt();
-	            if (idNo != 0 && idNo == account.getId()) {
-	                System.out.println(account.getName());
-	                System.out.println(account.getBalance());
-	                break; 
-	            } else {
-	                System.out.println("Invalid ID.");
-	            }
-		}
-	}
+		public void checkBalance() {
+			
+		            System.out.println("\nWhat is your ID No\t");
+		            int idNo = sc.nextInt();
+		            System.out.println("Id No = "+idNo);
+		            int id = account.getId();
+		            System.out.println("Id from getID = "+id);
+		            if (idNo != 0 && idNo == id) {
+		                System.out.println(account.getName());
+		                System.out.println(account.getBalance());
+		            } else {
+		            	
+		                System.out.println("Invalid ID.");
+		                System.out.println("Id No = "+idNo);
+		            }
+			}
 
 	@Override
 	public void withdrawMoney() {

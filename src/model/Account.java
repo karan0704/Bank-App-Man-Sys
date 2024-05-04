@@ -14,6 +14,7 @@ public class Account {
 	}
 	public void setId(int id) {
 		this.id = id;
+		System.out.println("setId success= "+id);
 	}
 	public String getName() {
 		return name;

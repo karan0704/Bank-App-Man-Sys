@@ -10,10 +10,10 @@ public class Admin {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.print("Welcome to Bank");
-		System.out.print("\nSelect option for Banking");
+		System.out.print("Welcome to Bank\n");
+		System.out.print("\nBanking Option");
 		System.out.print("\n1. Create Account" + "\n2. Check Balance" + "\n3. Withdraw Money" + "\n4. Add Money\n"
-				+ "\nOption for Banking\t");
+				+ "\nType option for Banking ->\t");
 
 		int selectedBankingOption = sc.nextInt();
 
@@ -47,5 +47,4 @@ public class Admin {
 			break;
 		}
 	}
-
 }
