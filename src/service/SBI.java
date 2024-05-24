@@ -43,15 +43,13 @@ public class SBI implements RBI {
 			
 		            System.out.println("\nWhat is your ID No\t");
 		            int idNo = sc.nextInt();
-		            System.out.println("Id No = "+idNo);
-		            int id = account.getId();
-		            System.out.println("Id from getID = "+id);
-		            if (idNo != 0 && idNo == id) {
+		            System.out.println("Typed Id No is "+idNo);
+		            System.out.println("Id from getID = "+account.getId());
+		            if (idNo == account.getId()) {
 		                System.out.println(account.getName());
 		                System.out.println(account.getBalance());
 		            } else {
-		            	
-		                System.out.println("Invalid ID.");
+		            	System.out.println("Invalid ID.");
 		                System.out.println("Id No = "+idNo);
 		            }
 			}
