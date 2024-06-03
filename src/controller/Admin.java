@@ -21,7 +21,6 @@ public class Admin {
 	}
 
 	public void callMenu() {
-
 		RBI sbi = new SBI();
 
 		switch (selectedBankingOption()) {
