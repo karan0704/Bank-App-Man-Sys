@@ -6,16 +6,23 @@ import model.Account;
 
 public class SBI implements RBI {
 
-	Scanner sc = new Scanner(System.in);
-	Account account = new Account();
+	private Scanner sc;	
+	private Account accountObject;
+	public SBI(Scanner sc, Account account) {
+		this.sc = sc;
+		accountObject = account;
+	}
 
 	@Override
 	public void createAccount() {
-		System.out.println("\nWrite your name below\t");
+		
+		System.out.println("\nWrite your name below\n");
 		String name = sc.nextLine();
-		account.setName(name);
+		accountObject.setName(name);
 		
 		System.out.println("\nWrite your ID below\t");
+	
+		// idNo = Saving input value
 		int idNo = sc.nextInt();
 		System.out.println("Id No = "+idNo);
 
@@ -23,21 +30,21 @@ public class SBI implements RBI {
 			System.out.println("(Checking if Id No == 0)"
 					+ "Id No = "+idNo);
 			
-			account.setId(idNo);
+			accountObject.setId(idNo);
 			System.out.println("Id No set = "+idNo);
 			
-			System.out.println("Account ID got -> "+account.getId());
+			System.out.println("Account ID got -> "+accountObject.getId());
 		}
 		
 		
 		System.out.println("\nWrite your Address below\t");
 		String add = sc.next();
-		account.setAdd(add);
+		accountObject.setAdd(add);
 		
 		
 		System.out.println("\nWrite your starting balance below\t");
 		double startingBalance = sc.nextDouble();
-		account.setBalance(startingBalance);
+		accountObject.setBalance(startingBalance);
 		
 		System.out.println("\nAccount is created\n");
 		System.out.println("---------------------------");
@@ -50,9 +57,9 @@ public class SBI implements RBI {
 		            System.out.println("\nWhat is your ID No\t");
 		            int idNo = sc.nextInt();
 		            System.out.println("Typed Id No is "+idNo);
-		            if (account.getId() == idNo ) {
-		                System.out.println("Name -> "+account.getName());
-		                System.out.println("Balance -> "+account.getBalance());
+		            if (accountObject.getId() == idNo ) {
+		                System.out.println("Name -> "+accountObject.getName());
+		                System.out.println("Balance -> "+accountObject.getBalance());
 		            } 
 		            else {
 		            	System.out.println("Invalid ID.");

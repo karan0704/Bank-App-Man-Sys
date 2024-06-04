@@ -1,9 +1,13 @@
 package controller;
 
+import java.util.Scanner;
+
 public class MainClass {
+	
 	public static void main(String[] args) {
-		
-		Admin adminObject = new Admin();
+
+		Scanner scannerObject = new Scanner(System.in);
+		Admin adminObject = new Admin(scannerObject);
 		
 		do {
 			adminObject.callMenu();

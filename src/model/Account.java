@@ -8,6 +8,7 @@ public class Account {
 	private String add;
 	private BigInteger contactNumber;
 	private double balance;
+
 	
 	public int getId() {
 		return id;
@@ -45,6 +46,15 @@ public class Account {
 		return "Account [id=" + id + ", name=" + name + ", add=" + add + ", contactNumber=" + contactNumber
 				+ ", balance=" + balance + "]";
 	}
+	/*public Account(int id, String name, String add, BigInteger contactNumber, double balance, Account accountObject) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.add = add;
+		this.contactNumber = contactNumber;
+		this.balance = balance;
+	}
+	*/
 	
 	
 
