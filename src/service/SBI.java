@@ -17,6 +17,7 @@ public class SBI implements RBI {
 	public void createAccount() {
 		
 		System.out.println("\nWrite your name below\n");
+		 sc.nextLine(); // Consume newline character
 		String name = sc.nextLine();
 		accountObject.setName(name);
 		
