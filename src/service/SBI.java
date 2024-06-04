@@ -22,7 +22,6 @@ public class SBI implements RBI {
 		accountObject.setName(name);
 		
 		System.out.println("\nWrite your ID below\t");
-	
 		// idNo = Saving input value
 		int idNo = sc.nextInt();
 		System.out.println("Id No = "+idNo);
@@ -39,12 +38,13 @@ public class SBI implements RBI {
 		
 		
 		System.out.println("\nWrite your Address below\t");
-		String add = sc.next();
+		String add = sc.nextLine();
 		accountObject.setAdd(add);
 		
 		
 		System.out.println("\nWrite your starting balance below\t");
 		double startingBalance = sc.nextDouble();
+		sc.nextLine(); // Consume newline character
 		accountObject.setBalance(startingBalance);
 		
 		System.out.println("\nAccount is created\n");
@@ -54,7 +54,7 @@ public class SBI implements RBI {
 // ***********************************Here is the Problem**********************
 	@Override
 		public void checkBalance() {
-			
+			while(true) {
 		            System.out.println("\nWhat is your ID No\t");
 		            int idNo = sc.nextInt();
 		            System.out.println("Typed Id No is "+idNo);
@@ -67,6 +67,7 @@ public class SBI implements RBI {
 		                System.out.println("Id No = "+idNo);
 		            }
 			}
+	}
 // ***********************************Here is the Problem**********************
 	@Override
 	public void withdrawMoney() {
