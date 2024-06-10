@@ -7,10 +7,10 @@ import model.Account;
 public class SBI implements RBI {
 
 	private Scanner sc;	
-	private Account accountObject;
-	public SBI(Scanner sc, Account account) {
+	Account accountObject;
+	 
+	public SBI(Scanner sc) {
 		this.sc = sc;
-		accountObject = account;
 	}
 
 	@Override
@@ -18,6 +18,7 @@ public class SBI implements RBI {
 		
 		System.out.println("\nWrite your name below\n");
 		 sc.nextLine(); // Consume newline character
+		 Account accountObject = new Account();
 		String name = sc.nextLine();
 		accountObject.setName(name);
 		
@@ -38,6 +39,7 @@ public class SBI implements RBI {
 		
 		
 		System.out.println("\nWrite your Address below\t");
+		 sc.nextLine();
 		String add = sc.nextLine();
 		accountObject.setAdd(add);
 		
@@ -54,10 +56,10 @@ public class SBI implements RBI {
 // ***********************************Here is the Problem**********************
 	@Override
 		public void checkBalance() {
-			while(true) {
 		            System.out.println("\nWhat is your ID No\t");
 		            int idNo = sc.nextInt();
 		            System.out.println("Typed Id No is "+idNo);
+
 		            if (accountObject.getId() == idNo ) {
 		                System.out.println("Name -> "+accountObject.getName());
 		                System.out.println("Balance -> "+accountObject.getBalance());
@@ -67,7 +69,6 @@ public class SBI implements RBI {
 		                System.out.println("Id No = "+idNo);
 		            }
 			}
-	}
 // ***********************************Here is the Problem**********************
 	@Override
 	public void withdrawMoney() {

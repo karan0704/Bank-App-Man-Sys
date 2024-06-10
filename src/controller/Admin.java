@@ -9,15 +9,13 @@ import service.SBI;
 public class Admin {
 	
 	private Scanner sc;
-
+	
 	public Admin(Scanner sc) {
 		this.sc = sc;
 	}
 	
-	public void callMenu() {
-		
-		Account accountObject = new Account();
-		RBI sbi = new SBI(sc, accountObject);
+	public void callMenu() {;
+		RBI sbi = new SBI(sc);
 		
 		
 		switch (selectedBankingOption()) {
