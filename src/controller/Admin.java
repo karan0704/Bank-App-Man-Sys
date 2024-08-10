@@ -1,21 +1,20 @@
 package controller;
 
-import java.util.Scanner;
-
-import model.Account;
 import service.RBI;
 import service.SBI;
 
+import java.util.Scanner;
+
 public class Admin {
 
-	private Scanner sc;
+    private final Scanner sc;
 
 	public Admin(Scanner sc) {
 		this.sc = sc;
 	}
 
 	public void callMenu() {
-		;
+
 		RBI sbi = new SBI(sc);
 
 		switch (selectedBankingOption()) {
@@ -49,10 +48,14 @@ public class Admin {
 	public int selectedBankingOption() {
 		System.out.print("Welcome to Bank\n");
 		System.out.print("\nBanking Option");
-		System.out.print("\n1. Create Account" + "\n2. Check Balance" + "\n3. Withdraw Money" + "\n4. Add Money\n"
-				+ "\nType option for Banking ->\t");
+        System.out.print("""
 
-		int selectedBankingOption = sc.nextInt();
-		return selectedBankingOption;
+                1. Create Account\
+                2. Check Balance
+                3. Withdraw Money
+                4. Add Money
+                Type option for Banking ->\t""");
+
+        return sc.nextInt();
 	}
 }

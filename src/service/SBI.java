@@ -1,12 +1,12 @@
 package service;
 
-import java.util.Scanner;
-
 import model.Account;
+
+import java.util.Scanner;
 
 public class SBI implements RBI {
 
-	private Scanner sc;
+	private final Scanner sc;
 	Account accountObject;
 
 	public SBI(Scanner sc) {
@@ -81,8 +81,7 @@ public class SBI implements RBI {
 	public int tryAgainExit() {
 		System.out.println("1. Please try again" + "2. Exit");
 
-		int tryAgainOrExit = sc.nextInt();
-		return tryAgainOrExit;
+		return sc.nextInt();
 
 	}
 
