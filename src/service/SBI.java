@@ -29,20 +29,13 @@ public class SBI implements RBI {
 		accountObject.setName(sc.nextLine());
 
 		System.out.println("\nWrite your ID below\t");
-		int idNo = sc.nextInt();
-		if(idNo != 0) {
-			accountObject.setId(idNo);
-		}
+		accountObject.setId(sc.nextInt());
 
 		System.out.println("\nWrite your Address below\t");
-		sc.nextLine();
-		String add = sc.nextLine();
-		accountObject.setAddress(add);
+		accountObject.setAddress(sc.nextLine());
 
 		System.out.println("\nWrite your starting balance below\t");
-		double startingBalance = sc.nextDouble();
-		sc.nextLine(); // Consume newline character
-		accountObject.setBalance(startingBalance);
+		accountObject.setBalance(sc.nextDouble());
 
 		System.out.println("\nAccount is created\n");
 		System.out.println("---------------------------");
