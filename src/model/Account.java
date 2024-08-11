@@ -1,49 +1,24 @@
 package model;
 
-import java.math.BigInteger;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.math.BigInteger;
+@Getter
+@Setter
 public class Account {
+
 	private int id;
 	private String name;
-	private String add;
+	private String address;
 	private BigInteger contactNumber;
 	private double balance;
 
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-		System.out.println("setId success= "+id);
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getAdd() {
-		return add;
-	}
-	public void setAdd(String add) {
-		this.add = add;
-	}
-	public BigInteger getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(BigInteger contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-	public double getBalance() {
-		return balance;
-	}
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
+
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", name=" + name + ", add=" + add + ", contactNumber=" + contactNumber
+		return "Account [id=" + id + ", name=" + name + ", address=" + address + ", contactNumber=" + contactNumber
 				+ ", balance=" + balance + "]";
 	}
 

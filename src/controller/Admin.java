@@ -3,12 +3,16 @@ package controller;
 import service.RBI;
 import service.SBI;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Admin {
 
     private final Scanner sc;
 
+	/*
+	-Constructor
+	-Called from MainCLass*/
 	public Admin(Scanner sc) {
 		this.sc = sc;
 	}
@@ -46,16 +50,20 @@ public class Admin {
 	}
 
 	public int selectedBankingOption() {
-		System.out.print("Welcome to Bank\n");
-		System.out.print("\nBanking Option");
-        System.out.print("""
+		try {
+			System.out.print("Welcome to Bank\n");
+			System.out.println("\nBanking Option");
+			System.out.print("""
+					1. Create Account
+					2. Check Balance
+					3. Withdraw Money
+					4. Add Money
+					Type option for Banking ->\t""");
 
-                1. Create Account\
-                2. Check Balance
-                3. Withdraw Money
-                4. Add Money
-                Type option for Banking ->\t""");
-
-        return sc.nextInt();
-	}
+			return sc.nextInt();
+		}catch (InputMismatchException e) {
+			sc.nextLine();
+		}
+		return 0;
+    }
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SBI implements RBI {
 
 	private final Scanner sc;
-	Account accountObject;
+	Account accountObject = new Account();
 
 	public SBI(Scanner sc) {
 		this.sc = sc;
@@ -17,8 +17,8 @@ public class SBI implements RBI {
 	public void createAccount() {
 
 		System.out.println("\nWrite your name below\n");
-		sc.nextLine(); // Consume newline character
-		accountObject = new Account();
+		sc.nextLine();
+
 		String name = sc.nextLine();
 		accountObject.setName(name);
 
@@ -39,7 +39,7 @@ public class SBI implements RBI {
 		System.out.println("\nWrite your Address below\t");
 		sc.nextLine();
 		String add = sc.nextLine();
-		accountObject.setAdd(add);
+		accountObject.setAddress(add);
 
 		System.out.println("\nWrite your starting balance below\t");
 		double startingBalance = sc.nextDouble();
@@ -53,9 +53,8 @@ public class SBI implements RBI {
 	@Override
 	public void checkBalance() {
 		System.out.println("\nWhat is your ID No\t");
-		int idNo = sc.nextInt();
-		System.out.println("Typed Id No is " + idNo);
-		System.out.println("Name -> " + accountObject.getName());
+		int	idNo = sc.nextInt();
+
 		if (accountObject != null && accountObject.getId() == idNo) {
 			// System.out.println("Name -> "+accountObject.getName());
 			System.out.println("Balance -> " + accountObject.getBalance());

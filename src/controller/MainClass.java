@@ -7,11 +7,9 @@ public class MainClass {
 	public static void main(String[] args) {
 
 		Scanner scannerObject = new Scanner(System.in);
-		Admin adminObject = new Admin(scannerObject);
+		Admin admin = new Admin(scannerObject);
 		
-		do {
-			adminObject.callMenu();
-		}while(true);
+		do admin.callMenu(); while(true);
 	}
 
 }
