@@ -44,17 +44,19 @@ public class SBI implements RBI {
 	@Override
 	public void checkBalance() {
 
+		if(accountObject == null) {
+			System.out.println("Sorry, you have not created your account");
+			return;
+		}
+
 		System.out.println("\nWhat is your ID No\t");
 		int idNo = sc.nextInt();
-		System.out.println("Typed Id No is " + idNo);
-		System.out.println(accountObject.getId());
 
-		if (accountObject != null && accountObject.getId() == idNo) {
-			System.out.println("Name -> " + accountObject.getName());
-			System.out.println("Balance -> " + accountObject.getBalance());
-		} else {
-			System.out.println("Invalid ID or no account created.");
+		if(accountObject.getId() != idNo) {
+			System.out.println("Sorry, Invalid ID or no account created.");
 		}
+		System.out.println("Name -> " + accountObject.getName());
+		System.out.println("Balance -> " + accountObject.getBalance());
 	}
 
 	@Override
