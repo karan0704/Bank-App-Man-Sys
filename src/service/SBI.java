@@ -18,13 +18,15 @@ public class SBI implements RBI {
 	@Override
 	public void createAccount() {
 
+		if(accountObject != null) {
+			System.out.println("Account already exists");
+			return;
+		}
 
+		accountObject = new Account();
 
 		System.out.println("\nWrite your name below\n");
-		sc.nextLine();
-		accountObject = new Account();
-		String name = sc.nextLine();
-		accountObject.setName(name);
+		accountObject.setName(sc.nextLine());
 
 		System.out.println("\nWrite your ID below\t");
 		int idNo = sc.nextInt();

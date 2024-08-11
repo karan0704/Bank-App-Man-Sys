@@ -9,7 +9,8 @@ public class MainClass {
 		Scanner scannerObject = new Scanner(System.in);
 		Admin admin = new Admin(scannerObject);
 		
-		do admin.callMenu();
+		admin.callMenu();
+		scannerObject.close();
     }
 
 }

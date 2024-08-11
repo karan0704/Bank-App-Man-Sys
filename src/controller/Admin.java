@@ -39,19 +39,20 @@ public class Admin {
 
 	public int selectedBankingOption() {
 		try {
-			System.out.print("Welcome to Bank\n");
-			System.out.println("\nBanking Option");
 			System.out.print("""
-					1. Create Account
-					2. Check Balance
-					3. Withdraw Money
-					4. Add Money
-					Type option for Banking ->\t""");
-
+					Welcome to Bank
+					Banking Option
+						1. Create Account
+						2. Check Balance
+						3. Withdraw Money
+						4. Add Money
+						5. Exit Program
+						Type option for Banking ->\t""");
 			return sc.nextInt();
 		}catch (InputMismatchException e) {
 			sc.nextLine();
+			System.out.println("Please enter a valid option");
+			return selectedBankingOption();
 		}
-		return 0;
     }
 }
