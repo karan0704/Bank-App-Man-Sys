@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class SBI implements RBI {
 
+	/* Declaration */
 	private final Scanner sc;
-	Account accountObject = new Account();
+	Account accountObject;
 
+	/* Constructor */
 	public SBI(Scanner sc) {
 		this.sc = sc;
 	}
@@ -16,24 +18,18 @@ public class SBI implements RBI {
 	@Override
 	public void createAccount() {
 
+
+
 		System.out.println("\nWrite your name below\n");
 		sc.nextLine();
-
+		accountObject = new Account();
 		String name = sc.nextLine();
 		accountObject.setName(name);
 
 		System.out.println("\nWrite your ID below\t");
-		// idNo = Saving input value
 		int idNo = sc.nextInt();
-		System.out.println("Id No = " + idNo);
-
-		if (idNo != 0) {
-			System.out.println("(Checking if Id No == 0)" + "Id No = " + idNo);
-
+		if(idNo != 0) {
 			accountObject.setId(idNo);
-			System.out.println("Id No set = " + idNo);
-
-			System.out.println("Account ID got -> " + accountObject.getId());
 		}
 
 		System.out.println("\nWrite your Address below\t");
@@ -52,22 +48,23 @@ public class SBI implements RBI {
 
 	@Override
 	public void checkBalance() {
+
 		System.out.println("\nWhat is your ID No\t");
-		int	idNo = sc.nextInt();
+		int idNo = sc.nextInt();
+		System.out.println("Typed Id No is " + idNo);
+		System.out.println(accountObject.getId());
 
 		if (accountObject != null && accountObject.getId() == idNo) {
-			// System.out.println("Name -> "+accountObject.getName());
+			System.out.println("Name -> " + accountObject.getName());
 			System.out.println("Balance -> " + accountObject.getBalance());
 		} else {
-			System.out.println("Invalid ID.");
-			System.out.println("Id No = " + idNo);
+			System.out.println("Invalid ID or no account created.");
 		}
 	}
 
 	@Override
 	public void withdrawMoney() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -75,13 +72,4 @@ public class SBI implements RBI {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public int tryAgainExit() {
-		System.out.println("1. Please try again" + "2. Exit");
-
-		return sc.nextInt();
-
-	}
-
 }

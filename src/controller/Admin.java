@@ -18,35 +18,23 @@ public class Admin {
 	}
 
 	public void callMenu() {
-
 		RBI sbi = new SBI(sc);
 
-		switch (selectedBankingOption()) {
+		while(true) {
+			switch (selectedBankingOption()) {
+				case 1 -> sbi.createAccount();
+				case 2 -> sbi.checkBalance();
+				case 3 -> sbi.withdrawMoney();
+				case 4 -> sbi.addMoney();
 
-		case 1:
-			sbi.createAccount();
-			break;
-
-		case 2:
-			sbi.checkBalance();
-			break;
-
-		case 3:
-			sbi.withdrawMoney();
-			break;
-
-		case 4:
-			sbi.addMoney();
-			break;
-
-		case 5:
-			System.out.println("Exiting...");
-			return;
-
-		default:
-			System.out.println("Choose valid option");
-			break;
+				case 5 -> {
+					System.out.println("Exiting...");
+					return;
+				}
+				default -> System.out.println("Choose valid option");
+			}
 		}
+
 	}
 
 	public int selectedBankingOption() {

@@ -9,7 +9,7 @@ public class MainClass {
 		Scanner scannerObject = new Scanner(System.in);
 		Admin admin = new Admin(scannerObject);
 		
-		do admin.callMenu(); while(true);
-	}
+		do admin.callMenu();
+    }
 
 }

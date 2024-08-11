@@ -2,10 +2,12 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigInteger;
 @Getter
 @Setter
+@ToString
 public class Account {
 
 	private int id;
@@ -13,16 +15,4 @@ public class Account {
 	private String address;
 	private BigInteger contactNumber;
 	private double balance;
-
-	
-
-	@Override
-	public String toString() {
-		return "Account [id=" + id + ", name=" + name + ", address=" + address + ", contactNumber=" + contactNumber
-				+ ", balance=" + balance + "]";
-	}
-
-	
-	
-
 }
