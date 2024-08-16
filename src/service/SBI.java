@@ -25,19 +25,19 @@ public class SBI implements RBI {
 
 		accountObject = new Account();
 
-		System.out.println("\nWrite your name below\n");
+		System.out.println("Write your name below\t");
 		accountObject.setName(sc.nextLine());
 
-		System.out.println("\nWrite your ID below\t");
+		System.out.println("Write your ID below\t");
 		accountObject.setId(sc.nextInt());
 
-		System.out.println("\nWrite your Address below\t");
+		System.out.println("Write your Address below\t");
 		accountObject.setAddress(sc.nextLine());
 
-		System.out.println("\nWrite your starting balance below\t");
+		System.out.println("Write your starting balance below\t");
 		accountObject.setBalance(sc.nextDouble());
 
-		System.out.println("\nAccount is created\n");
+		System.out.println("Account is created");
 		System.out.println("---------------------------");
 	}
 
