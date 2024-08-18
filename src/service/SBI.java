@@ -8,7 +8,7 @@ public class SBI implements RBI {
 
 	/* Declaration */
 	private final Scanner sc;
-	Account accountObject;
+	Account accountObject = new Account();
 
 	/* Constructor */
 	public SBI(Scanner sc) {
@@ -18,19 +18,21 @@ public class SBI implements RBI {
 	@Override
 	public void createAccount() {
 
-		if(accountObject != null) {
+		if (accountObject != null) {
 			System.out.println("Account already exists");
 			return;
 		}
 
-		accountObject = new Account();
+//		accountObject = new Account();
 
+		sc.nextLine();
 		System.out.println("Write your name below\t");
 		accountObject.setName(sc.nextLine());
 
 		System.out.println("Write your ID below\t");
 		accountObject.setId(sc.nextInt());
 
+		sc.nextLine();
 		System.out.println("Write your Address below\t");
 		accountObject.setAddress(sc.nextLine());
 
