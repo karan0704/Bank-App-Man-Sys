@@ -26,7 +26,8 @@ public class Admin {
 				case 2 -> sbi.checkBalance();
 				case 3 -> sbi.withdrawMoney();
 				case 4 -> sbi.addMoney();
-				case 5 -> {
+				case 5 -> sbi.
+				case 6 -> {
 					System.out.println("Exiting...");
 					return;
 				}

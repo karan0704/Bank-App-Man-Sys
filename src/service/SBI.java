@@ -1,6 +1,8 @@
 package service;
 
 import model.Account;
+import repository.AccountRepo;
+import repository.AccountRepoImpl;
 
 import java.util.Scanner;
 
@@ -8,7 +10,8 @@ public class SBI implements RBI {
 
 	/* Declaration */
 	private final Scanner sc;
-	Account accountObject = new Account();
+	private final AccountRepo;
+	
 
 	/* Constructor */
 	public SBI(Scanner sc) {
@@ -18,27 +21,23 @@ public class SBI implements RBI {
 	@Override
 	public void createAccount() {
 
-		if (accountObject != null) {
-			System.out.println("Account already exists");
-			return;
-		}
-
-//		accountObject = new Account();
+		AccountRepo accountRepo = new AccountRepoImpl();
 
 		sc.nextLine();
 		System.out.println("Write your name below\t");
-		accountObject.setName(sc.nextLine());
+		String accountName = sc.nextLine();
 
 		System.out.println("Write your ID below\t");
-		accountObject.setId(sc.nextInt());
+		int accountId = sc.nextInt();
 
 		sc.nextLine();
 		System.out.println("Write your Address below\t");
-		accountObject.setAddress(sc.nextLine());
+		String accountAddress = sc.nextLine();
 
 		System.out.println("Write your starting balance below\t");
-		accountObject.setBalance(sc.nextDouble());
+		double accountStartingBalance = sc.nextDouble();
 
+		accountRepo.createAccount(accountName, accountId, accountAddress,accountStartingBalance);
 		System.out.println("Account is created");
 		System.out.println("---------------------------");
 	}
