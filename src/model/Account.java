@@ -9,7 +9,6 @@ import java.math.BigInteger;
 @Setter
 @ToString
 public class Account {
-
 	private int id;
 	private String name;
 	private String address;

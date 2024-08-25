@@ -9,22 +9,26 @@ public class AccountRepoImpl implements  AccountRepo{
     private ArrayList<Account> accounts;
 
     @Override
+    public void createAccount(Account account) {
+        accounts = new ArrayList<>();
+        accounts.add(account);
+    }
+
+    @Override
     public ArrayList<Account> getAccounts() {
 
         if (accounts==null){
-            System.out.println("Account list is empty");
+            System.out.println("Sorry, there is no accounts in the database");
         }
         return accounts;
     }
-
-    @Override
-    public void createAccount(String accountName, int accountId, String accountAddress, double accountStartingBalance) {
-        accounts =new ArrayList<>();
-        accounts.add();
-    }
-
     @Override
     public Account getAccount(int id) {
+        for (Account account : accounts) {
+            if (account.getId() == id) {
+                return account;
+            }
+        }
         return null;
     }
 

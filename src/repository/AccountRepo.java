@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface AccountRepo {
    ArrayList<Account> getAccounts();
-   void createAccount(String accountName, int accountId, String accountAddress, double accountStartingBalance);
+   void createAccount(Account  account);
    Account getAccount(int id);
    void updateAccount(Account account);
    void deleteAccount(int id);

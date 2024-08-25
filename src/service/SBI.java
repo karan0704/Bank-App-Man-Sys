@@ -10,34 +10,34 @@ public class SBI implements RBI {
 
 	/* Declaration */
 	private final Scanner sc;
-	private final AccountRepo;
-	
+	private Account account;
+	AccountRepo accountRepo;
 
 	/* Constructor */
-	public SBI(Scanner sc) {
+	public SBI(Scanner sc, Account account) {
 		this.sc = sc;
+		this.account = account;
 	}
 
 	@Override
 	public void createAccount() {
-
-		AccountRepo accountRepo = new AccountRepoImpl();
+		accountRepo = new AccountRepoImpl();
 
 		sc.nextLine();
 		System.out.println("Write your name below\t");
-		String accountName = sc.nextLine();
+		account.setName(sc.nextLine());
 
 		System.out.println("Write your ID below\t");
-		int accountId = sc.nextInt();
+		account.setId(sc.nextInt());
 
 		sc.nextLine();
 		System.out.println("Write your Address below\t");
-		String accountAddress = sc.nextLine();
+		account.setAddress(sc.nextLine());
 
 		System.out.println("Write your starting balance below\t");
-		double accountStartingBalance = sc.nextDouble();
+		account.setBalance(sc.nextDouble());
 
-		accountRepo.createAccount(accountName, accountId, accountAddress,accountStartingBalance);
+		accountRepo.createAccount(account);
 		System.out.println("Account is created");
 		System.out.println("---------------------------");
 	}
@@ -45,19 +45,14 @@ public class SBI implements RBI {
 	@Override
 	public void checkBalance() {
 
-		if(accountObject == null) {
+		if(accountRepo.getAccounts() == null) {
 			System.out.println("Sorry, you have not created your account");
 			return;
 		}
 
 		System.out.println("\nWhat is your ID No\t");
-		int idNo = sc.nextInt();
-
-		if(accountObject.getId() != idNo) {
-			System.out.println("Sorry, Invalid ID or no account created.");
-		}
-		System.out.println("Name -> " + accountObject.getName());
-		System.out.println("Balance -> " + accountObject.getBalance());
+		Account account1 = accountRepo.getAccount(sc.nextInt());
+		account1.toString();
 	}
 
 	@Override
