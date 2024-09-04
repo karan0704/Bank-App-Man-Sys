@@ -2,9 +2,8 @@ package controller;
 
 import model.Account;
 import repository.AccountRepo;
-import repository.AccountRepoImpl;
-import service.RBI;
-import service.SBI;
+import service.RBIService;
+import service.SBIServiceImpl;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -19,7 +18,7 @@ public class MainMenu {
     -Constructor
     -Called from MainCLass
     */
-    public MainMenu(Scanner sc, Account account, AccountRepoImpl accountRepoObject) {
+    public MainMenu(Scanner sc, Account account, AccountRepo accountRepoObject) {
         this.sc = sc;
         this.account = account;
         this.accountRepo = accountRepoObject;
@@ -29,7 +28,7 @@ public class MainMenu {
     -Called from MainCLass
     */
     public void callMenu() {
-        RBI sbi = new SBI(sc, account, accountRepo);
+        RBIService sbi = new SBIServiceImpl(sc, account, accountRepo);
 
         while (true) {
             switch (selectedBankingOption()) {
@@ -46,21 +45,23 @@ public class MainMenu {
     }
 
     public int selectedBankingOption() {
-        try {
-            System.out.print("""
-					Welcome to Bank
-					Banking Option
-						1. Create Account
-						2. Check Balance
-						3. Withdraw Money
-						4. Add Money
-						6. Exit Program
-						Type option for Banking ->\t""");
-            return sc.nextInt();
-        } catch (InputMismatchException e) {
-            sc.nextLine();
-            System.out.println("Please enter a valid option");
-            return selectedBankingOption();
+        while (true) {
+            try {
+                System.out.print("""
+                        Welcome to Bank
+                        Banking Option
+                        	1. Create Account
+                        	2. Check Balance
+                        	3. Withdraw Money
+                        	4. Add Money
+                        	6. Exit Program
+                        	Type option for Banking ->\t""");
+                return sc.nextInt();
+            } catch (InputMismatchException e) {
+                sc.nextLine();
+                System.out.println("Please enter a valid option");
+
+            }
         }
     }
 }

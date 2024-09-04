@@ -1,6 +1,6 @@
 package service;
 
-public interface RBI {	
+public interface RBIService {
 	void createAccount();
 	void checkBalance();
 	void withdrawMoney();
