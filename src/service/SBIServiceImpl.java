@@ -93,18 +93,9 @@ public class SBIServiceImpl implements RBIService {
 			} catch (InputMismatchException e) {
 				sc.nextLine();
 				System.out.println("Invalid Input");
-				System.out.println("""
-						Press 1 to check balance again
-							  2 to Exit loop
-						""");
-					switch (sc.nextInt()){
-						case 1:validId=false;
-						break;
-						case 2:validId=true;
-						return;
-					}
 			}
 		}
+
 		if (optionalAccount.isPresent()) {
 			System.out.println(optionalAccount.get().getBalance());
 		} else {
