@@ -2,12 +2,12 @@ package repository;
 
 import model.Account;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 public interface AccountRepo {
-   ArrayList<Account> getAccounts();
    void createAccount(Account  account);
-   Account getAccount(int id);
+
+   Optional<Account> getAccount(int id);
    void updateAccount(Account account);
    void deleteAccount(int id);
    Account addMoney(int id, double balance);

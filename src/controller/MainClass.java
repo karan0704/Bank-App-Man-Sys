@@ -1,6 +1,7 @@
 package controller;
 
 import model.Account;
+import repository.AccountRepoImpl;
 
 import java.util.Scanner;
 
@@ -11,7 +12,10 @@ public class MainClass {
 		/*Object Creation*/
 		Scanner scannerObject = new Scanner(System.in);
 		Account accountObject = new Account();
-		MainMenu mainMenu = new MainMenu(scannerObject, accountObject);
+		AccountRepoImpl accountRepoObject = new AccountRepoImpl();
+
+		/*Dependency Injection*/
+		MainMenu mainMenu = new MainMenu(scannerObject, accountObject, accountRepoObject);
 
 		/*Method Calls*/
 		mainMenu.callMenu();

@@ -3,6 +3,7 @@ package repository;
 import model.Account;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class AccountRepoImpl implements  AccountRepo{
 
@@ -10,26 +11,25 @@ public class AccountRepoImpl implements  AccountRepo{
 
     @Override
     public void createAccount(Account account) {
-        accounts = new ArrayList<>();
+        if (accounts == null) {
+            accounts = new ArrayList<>();
+        }
         accounts.add(account);
     }
 
     @Override
-    public ArrayList<Account> getAccounts() {
-
-        if (accounts==null){
-            System.out.println("Sorry, there is no accounts in the database");
+    public Optional<Account> getAccount(int id) {
+        if (accounts == null) {
+            System.out.println("No accounts created");
+            return Optional.empty();
         }
-        return accounts;
-    }
-    @Override
-    public Account getAccount(int id) {
         for (Account account : accounts) {
             if (account.getId() == id) {
-                return account;
+                return Optional.of(account);
             }
         }
-        return null;
+
+        return Optional.empty();
     }
 
     @Override

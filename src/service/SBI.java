@@ -2,26 +2,29 @@ package service;
 
 import model.Account;
 import repository.AccountRepo;
-import repository.AccountRepoImpl;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class SBI implements RBI {
 
 	/* Declaration */
 	private final Scanner sc;
-	private Account account;
+	private final Account account;
 	AccountRepo accountRepo;
 
-	/* Constructor */
-	public SBI(Scanner sc, Account account) {
+	/*
+	-Constructor
+	*/
+	public SBI(Scanner sc, Account account, AccountRepo accountRepo) {
 		this.sc = sc;
 		this.account = account;
+		this.accountRepo = accountRepo;
 	}
 
 	@Override
 	public void createAccount() {
-		accountRepo = new AccountRepoImpl();
+		//accountRepo = new AccountRepoImpl();
 
 		sc.nextLine();
 		System.out.println("Write your name below\t");
@@ -44,15 +47,14 @@ public class SBI implements RBI {
 
 	@Override
 	public void checkBalance() {
-
-		if(accountRepo.getAccounts() == null) {
-			System.out.println("Sorry, you have not created your account");
-			return;
-		}
-
+		sc.nextLine();
 		System.out.println("\nWhat is your ID No\t");
-		Account account1 = accountRepo.getAccount(sc.nextInt());
-		account1.toString();
+
+		Optional<Account> optionalAccount = accountRepo.getAccount(sc.nextInt());
+		if (optionalAccount.isPresent()) {
+			System.out.println(optionalAccount.get().getBalance());
+		}
+		System.out.println("Account not found");
 	}
 
 	@Override
