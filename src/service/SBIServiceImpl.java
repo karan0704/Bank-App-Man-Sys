@@ -81,9 +81,30 @@ public class SBIServiceImpl implements RBIService {
 	@Override
 	public void checkBalance() {
 		sc.nextLine();
-		System.out.println("\nWhat is your ID No\t");
 
-		Optional<Account> optionalAccount = accountRepo.getAccount(sc.nextInt());
+		Optional<Account> optionalAccount = null;
+
+		boolean validId = false;
+		while (!validId) {
+			try {
+				System.out.println("\nWhat is your ID No\t");
+				optionalAccount = accountRepo.getAccount(sc.nextInt());
+				validId = true;
+			} catch (InputMismatchException e) {
+				sc.nextLine();
+				System.out.println("Invalid Input");
+				System.out.println("""
+						Press 1 to check balance again
+							  2 to Exit loop
+						""");
+					switch (sc.nextInt()){
+						case 1:validId=false;
+						break;
+						case 2:validId=true;
+						return;
+					}
+			}
+		}
 		if (optionalAccount.isPresent()) {
 			System.out.println(optionalAccount.get().getBalance());
 		} else {
