@@ -46,22 +46,20 @@ public class MainMenu {
     }
 
     public int selectedBankingOption() {
-        while (true) {
-            try {
-                System.out.print("""
-                        Welcome to Bank
-                        Banking Option
-                        	1. Create Account
-                        	2. Check Balance
-                        	3. Withdraw Money
-                        	4. Add Money
-                        	6. Exit Program
-                        	Type option for Banking ->\t""");
-                return sc.nextInt();
-            } catch (InputMismatchException e) {
-                sc.nextLine();
-                return 0;
-            }
+        try {
+            System.out.print("""
+                    Welcome to Bank
+                    Banking Option
+                    	1. Create Account
+                    	2. Check Balance
+                    	3. Withdraw Money
+                    	4. Add Money
+                    	6. Exit Program
+                    	Type option for Banking ->\t""");
+            return sc.nextInt();
+        } catch (InputMismatchException e) {
+            sc.nextLine();
+            return 0;
         }
     }
 }
