@@ -18,10 +18,10 @@ public class MainMenu {
     -Constructor
     -Called from MainCLass
     */
-    public MainMenu(Scanner sc, Account account, AccountRepo accountRepoObject) {
-        this.sc = sc;
+    public MainMenu(Scanner scanner, Account account, AccountRepo accountRepo) {
+        this.sc = scanner;
         this.account = account;
-        this.accountRepo = accountRepoObject;
+        this.accountRepo = accountRepo;
     }
 
     /*
@@ -40,6 +40,7 @@ public class MainMenu {
                     System.out.println("Exiting...");
                     return;
                 }
+                default -> System.out.println("Invalid option");
             }
         }
     }
@@ -59,8 +60,7 @@ public class MainMenu {
                 return sc.nextInt();
             } catch (InputMismatchException e) {
                 sc.nextLine();
-                System.out.println("Please enter a valid option");
-
+                return 0;
             }
         }
     }

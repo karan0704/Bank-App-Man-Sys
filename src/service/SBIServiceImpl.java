@@ -43,7 +43,7 @@ public class SBIServiceImpl implements RBIService {
 				validId = true;
 			} catch (InputMismatchException e) {
 				sc.nextLine();
-				System.out.println(e.getMessage());
+				System.out.println("Invalid ID");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -82,7 +82,7 @@ public class SBIServiceImpl implements RBIService {
 	public void checkBalance() {
 		sc.nextLine();
 
-		Optional<Account> optionalAccount = null;
+        Optional<Account> optionalAccount = Optional.empty();
 
 		boolean validId = false;
 		while (!validId) {

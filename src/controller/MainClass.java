@@ -11,15 +11,15 @@ public class MainClass {
 	public static void main(String[] args) {
 
 		/*Object Creation*/
-		Scanner scannerObject = new Scanner(System.in);
-		Account accountObject = new Account();
-		AccountRepo accountRepoObject = new AccountRepoImpl();
+		Scanner scanner = new Scanner(System.in);
+		Account account = new Account();
+		AccountRepo accountRepo = new AccountRepoImpl();
 
 		/*Dependency Injection*/
-		MainMenu mainMenu = new MainMenu(scannerObject, accountObject, accountRepoObject);
+		MainMenu mainMenu = new MainMenu(scanner, account, accountRepo);
 
 		/*Method Calls*/
 		mainMenu.callMenu();
-		scannerObject.close();
+		scanner.close();
     }
 }
