@@ -1,13 +1,10 @@
 package model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.math.BigInteger;
-@Getter
-@Setter
-@ToString
+
+@Data
 public class Account {
 	private int id;
 	private String name;

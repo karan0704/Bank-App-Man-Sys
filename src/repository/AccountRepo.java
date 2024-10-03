@@ -6,7 +6,9 @@ import java.util.Optional;
 
 public interface AccountRepo {
 
-    void createAccount(Account  account);
+   void createAccount(Account account);
+
+   /*List<Account> getAllAccounts();*/
    Optional<Account> getAccount(int id);
    void updateAccount(Account account);
    void deleteAccount(int id);

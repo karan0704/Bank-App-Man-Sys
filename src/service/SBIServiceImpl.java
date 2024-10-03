@@ -15,8 +15,8 @@ public class SBIServiceImpl implements RBIService {
 	private final AccountRepo accountRepo;
 
 	/*
-	-Constructor
-	*/
+    -Constructor
+    */
 	public SBIServiceImpl(Scanner sc, Account account, AccountRepo accountRepo) {
 		this.sc = sc;
 		this.account = account;
@@ -25,21 +25,39 @@ public class SBIServiceImpl implements RBIService {
 
 	@Override
 	public void createAccount() {
-		sc.nextLine();
 
-		try {
-			System.out.println("Write your name below\t");
-			account.setName(sc.nextLine());
-		} catch (Exception e) {
-			sc.nextLine();
-			System.out.println(e.getMessage());
+		sc.nextLine();
+		{
+			boolean validName = false;
+			while (!validName) {
+				try {
+					System.out.println("Write your name below\t");
+					String name = sc.nextLine();
+					if (!name.matches("[a-zA-Z\\s]+")) {
+						System.out.println("Invalid name. Please enter a valid name containing only letters and spaces.");
+					} else {
+						account.setName(name);
+					}
+					validName = true;
+				} catch (Exception e) {
+					sc.nextLine();
+					System.out.println(e.getMessage());
+				}
+			}
 		}
 
+		{
 		boolean validId = false;
 		while (!validId) {
 			try {
 				System.out.println("Write your ID below\t");
-				account.setId(sc.nextInt());
+				int id = sc.nextInt();
+				Optional<Account> optionalAccount = accountRepo.getAccount(id);
+				if (optionalAccount.isPresent()) {
+					System.out.println("Invalid ID. Please enter a valid ID.");
+				} else {
+					account.setId(id);
+				}
 				validId = true;
 			} catch (InputMismatchException e) {
 				sc.nextLine();
@@ -48,33 +66,43 @@ public class SBIServiceImpl implements RBIService {
 				System.out.println(e.getMessage());
 			}
 		}
-
-		sc.nextLine();
-
-		try {
-			System.out.println("Write your Address below\t");
-			account.setAddress(sc.nextLine());
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
+		{
+			boolean validBalance = false;
+			while (!validBalance) {
+				try {
+					System.out.println("Write your starting balance below\t");
+					account.setBalance(sc.nextDouble());
+					validBalance = true;
+				} catch (InputMismatchException e) {
+					sc.nextLine();
+					System.out.println("Invalid Amount");
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
 
-		boolean validBalance = false;
-		while (!validBalance) {
+				accountRepo.createAccount(account);
+				System.out.println("Account is created");
+				System.out.println("---------------------------");
+			}
+		}
+		{
+			System.out.println("Write your Address below\t");
+			account.setAddress(validString());
+		}
+	}
+
+	private String validString() {
+		sc.nextLine();
+		//boolean validString = false;
+		while (true) {
 			try {
-				System.out.println("Write your starting balance below\t");
-				account.setBalance(sc.nextDouble());
-				validBalance = true;
-			} catch (InputMismatchException e) {
-				sc.nextLine();
-				System.out.println(e.getMessage());
+				return sc.nextLine();
+
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
+
 			}
-
-
-			accountRepo.createAccount(account);
-			System.out.println("Account is created");
-			System.out.println("---------------------------");
 		}
 	}
 
@@ -82,7 +110,17 @@ public class SBIServiceImpl implements RBIService {
 	public void checkBalance() {
 		sc.nextLine();
 
-        Optional<Account> optionalAccount = Optional.empty();
+		Optional<Account> optionalAccount = getAccount();
+
+		if (optionalAccount.isPresent()) {
+			System.out.println(optionalAccount.get().getBalance());
+		} else {
+			System.out.println("Account not found");
+		}
+	}
+
+	private Optional<Account> getAccount() {
+		Optional<Account> optionalAccount = Optional.empty();
 
 		boolean validId = false;
 		while (!validId) {
@@ -95,22 +133,24 @@ public class SBIServiceImpl implements RBIService {
 				System.out.println("Invalid Input");
 			}
 		}
+		return optionalAccount;
+	}
 
+	@Override
+	public void withdrawMoney() {
+		sc.nextLine();
+
+		Optional<Account> optionalAccount = getAccount();
 		if (optionalAccount.isPresent()) {
-			System.out.println(optionalAccount.get().getBalance());
+			optionalAccount.get().setBalance(sc.nextDouble());
 		} else {
 			System.out.println("Account not found");
 		}
 	}
 
-	@Override
-	public void withdrawMoney() {
-	}
-
 
 	@Override
 	public void addMoney() {
-		// TODO Auto-generated method stub
 	}
 }
 
