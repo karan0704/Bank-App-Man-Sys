@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Optional;
 import java.util.Scanner;
 
+
 public class SBIServiceImpl implements RBIService {
 
 	/* Declaration */
@@ -25,28 +26,57 @@ public class SBIServiceImpl implements RBIService {
 
 	@Override
 	public void createAccount() {
-
+		getId();
 		sc.nextLine();
+		getName();
+		enterStartingBalance();
+	}
+
+	private void enterStartingBalance() {
+		boolean validBalance = false;
+		while (!validBalance) {
+			try {
+				System.out.println("Write your starting balance below\t");
+				account.setBalance(sc.nextDouble());
+				validBalance = true;
+			} catch (InputMismatchException e) {
+				sc.nextLine();
+				System.out.println("Invalid Amount");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+			accountRepo.createAccount(account);
+			System.out.println("Account is created");
+			System.out.println("---------------------------");
+		}
 		{
-			boolean validName = false;
-			while (!validName) {
-				try {
-					System.out.println("Write your name below\t");
-					String name = sc.nextLine();
-					if (!name.matches("[a-zA-Z\\s]+")) {
-						System.out.println("Invalid name. Please enter a valid name containing only letters and spaces.");
-					} else {
-						account.setName(name);
-					}
-					validName = true;
-				} catch (Exception e) {
-					sc.nextLine();
-					System.out.println(e.getMessage());
+			System.out.println("Write your Address below\t");
+			account.setAddress(validString());
+		}
+	}
+
+
+	private void getName() {
+		boolean validName = false;
+		while (!validName) {
+			try {
+				System.out.println("Write your name below\t");
+				String name = sc.nextLine();
+				if (!name.matches("[a-zA-Z\\s]+")) {
+					System.out.println("Invalid name. Please enter a valid name containing only letters and spaces.");
+				} else {
+					account.setName(name);
 				}
+				validName = true;
+			} catch (Exception e) {
+				sc.nextLine();
+				System.out.println(e.getMessage());
 			}
 		}
+	}
 
-		{
+	private void getId() {
 		boolean validId = false;
 		while (!validId) {
 			try {
@@ -59,36 +89,14 @@ public class SBIServiceImpl implements RBIService {
 					account.setId(id);
 				}
 				validId = true;
-			} catch (InputMismatchException e) {
+			} catch (
+					InputMismatchException e) {
 				sc.nextLine();
 				System.out.println("Invalid ID");
-			} catch (Exception e) {
+			} catch (
+					Exception e) {
 				System.out.println(e.getMessage());
 			}
-		}
-		}
-		{
-			boolean validBalance = false;
-			while (!validBalance) {
-				try {
-					System.out.println("Write your starting balance below\t");
-					account.setBalance(sc.nextDouble());
-					validBalance = true;
-				} catch (InputMismatchException e) {
-					sc.nextLine();
-					System.out.println("Invalid Amount");
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-				}
-
-				accountRepo.createAccount(account);
-				System.out.println("Account is created");
-				System.out.println("---------------------------");
-			}
-		}
-		{
-			System.out.println("Write your Address below\t");
-			account.setAddress(validString());
 		}
 	}
 
@@ -104,6 +112,18 @@ public class SBIServiceImpl implements RBIService {
 
 			}
 		}
+	}
+
+	@Override
+	public int getInput() {
+		try {
+			return sc.nextInt();
+		} catch (InputMismatchException e) {
+			sc.nextLine();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
 	}
 
 	@Override
@@ -153,4 +173,5 @@ public class SBIServiceImpl implements RBIService {
 	public void addMoney() {
 	}
 }
+
 
