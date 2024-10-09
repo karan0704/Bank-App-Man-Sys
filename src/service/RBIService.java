@@ -5,6 +5,6 @@ public interface RBIService {
 	void checkBalance();
 	void withdrawMoney();
 	void addMoney();
-
-	int getInput();
+//	String validString();
+//	int validInt();
 }
